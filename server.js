@@ -3,12 +3,9 @@ const app = express();
 
 const server = require("http").createServer(app);
 
-const cors = require("cors");
-app.use(cors());
-
 const io = require("socket.io")(server, {
     cors: { 
-        origin: 'https://app.netlify.com/',
+        origin: 'https://priceless-dijkstra-4e1b79.netlify.app/',
         methods: ["GET", "POST"]
     }
 });

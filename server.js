@@ -3,6 +3,11 @@ const app = express();
 
 const server = require("http").createServer(app);
 
+var cors = require('cors');
+
+// use it before all route definitions
+app.use(cors({origin: 'https://priceless-dijkstra-4e1b79.netlify.app/'}));
+
 const io = require("socket.io")(server, {
     cors: { 
         origin: 'https://priceless-dijkstra-4e1b79.netlify.app/',

@@ -8,15 +8,11 @@ app.use(cors());
 
 const io = require("socket.io")(server, {
     cors: { 
-        origin: '*',
+        origin: 'https://app.netlify.com/',
+        methods: ["GET", "POST"]
     }
 });
 
-io.configure(function () { 
-    io.set("transports", ["xhr-polling"]); 
-    io.set("polling duration", 10); 
-  }); 
-    
 
 io.on("connection", (socket) => {
     console.log("What is Socket : ", socket);

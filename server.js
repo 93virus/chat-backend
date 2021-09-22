@@ -7,10 +7,16 @@ const cors = require("cors");
 app.use(cors());
 
 const io = require("socket.io")(server, {
-    cors: {
+    cors: { 
         origin: '*',
     }
 });
+
+io.configure(function () { 
+    io.set("transports", ["xhr-polling"]); 
+    io.set("polling duration", 10); 
+  }); 
+    
 
 io.on("connection", (socket) => {
     console.log("What is Socket : ", socket);
@@ -22,4 +28,4 @@ io.on("connection", (socket) => {
     })
 });
 
-server.listen(5000, () => console.log("Server is Listening at port 5000..."));
+// server.listen(5000, () => console.log("Server is Listening at port 5000..."));

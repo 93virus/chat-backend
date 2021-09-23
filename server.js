@@ -3,21 +3,19 @@ const app = express();
 
 const server = require("http").createServer(app);
 
-// const cors = require("cors");
-// app.use(cors());
+const cors = require("cors");
+app.use(cors());
 
 const hostUrl = "https://chatjsfrontend.herokuapp.com";
 
 const io = require("socket.io")(server
     , {
     cors: {    
-        origin: "*",
+        origin: hostUrl,
         credentials: true  
     }
 }
 );
-
-let members = [];
 
 app.get("/", (req,res) => {
     res.send("Hello");

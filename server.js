@@ -11,7 +11,7 @@ const hostUrl = "https://chatjsfrontend.herokuapp.com";
 const io = require("socket.io")(server
     , {
     cors: {    
-        origin: hostUrl,
+        origin: "https://chatjsfrontend.herokuapp.com",
         credentials: true  
     }
 }

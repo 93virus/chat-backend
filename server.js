@@ -3,18 +3,11 @@ const app = express();
 
 const server = require("http").createServer(app);
 
-var cors = require('cors');
+const io = require("socket.io")(server,  {origins: '*'});
 
-// use it before all route definitions
-app.use(cors({origin: 'https://priceless-dijkstra-4e1b79.netlify.app/'}));
-
-const io = require("socket.io")(server, {
-    cors: { 
-        origin: 'https://priceless-dijkstra-4e1b79.netlify.app/',
-        methods: ["GET", "POST"]
-    }
-});
-
+app.get("/", (req,res) => {
+    res.send("Hello");
+})
 
 io.on("connection", (socket) => {
     console.log("What is Socket : ", socket);

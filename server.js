@@ -6,12 +6,10 @@ const server = require("http").createServer(app);
 const cors = require("cors");
 app.use(cors());
 
-const hostUrl = "https://chatjsfrontend.herokuapp.com";
-
 const io = require("socket.io")(server
     , {
     cors: {    
-        origin: "https://chatjsfrontend.herokuapp.com",
+        origin: ["https://chatjsfrontend.herokuapp.com"],
         credentials: true  
     }
 }

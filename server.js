@@ -3,7 +3,13 @@ const app = express();
 
 const server = require("http").createServer(app);
 
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+    cors: {    
+        origin: ["https://priceless-dijkstra-4e1b79.netlify.app"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true  
+    }
+});
 
 const cors = require("cors");
 app.use(cors());

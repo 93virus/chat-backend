@@ -13,8 +13,6 @@ const io = require("socket.io")(server, {
     }
 });
 
-
-
 app.get("/", (req,res) => {
     res.send("Hello");
     console.log("Hello");
@@ -27,6 +25,10 @@ io.on("connection", (socket) => {
     socket.on("chat", (payload) => {
         console.log("What is Payload ? : ", payload);
         io.emit("chat", payload);
+    })
+
+    socket.on("join", (payload) => {
+        io.emit("join", payload);
     })
 });
 

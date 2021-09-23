@@ -14,7 +14,7 @@ const io = require("socket.io")(server, {
 const cors = require("cors");
 app.use(cors());
 
-app.get("/", (req,res) => {
+app.get("/hello", (req,res) => {
     res.send("Hello");
 })
 

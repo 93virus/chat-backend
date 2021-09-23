@@ -3,15 +3,21 @@ const app = express();
 
 const server = require("http").createServer(app);
 
-const cors = require("cors");
-app.use(cors());
+// const cors = require("cors");
+// app.use(cors());
 
-const io = require("socket.io")(server, {
+const hostUrl = "https://chatjsfrontend.herokuapp.com";
+
+const io = require("socket.io")(server
+    , {
     cors: {    
-        origin: ["https://chatjsfrontend.herokuapp.com"],
+        origin: "*",
         credentials: true  
     }
-});
+}
+);
+
+let members = [];
 
 app.get("/", (req,res) => {
     res.send("Hello");
@@ -29,7 +35,10 @@ io.on("connection", (socket) => {
 
     socket.on("join", (payload) => {
         io.emit("join", payload);
+        members.push(payload);
     })
+
+
 });
 
 server.listen(process.env.PORT || 5000, () => console.log("Server is Listening at port 5000..."));

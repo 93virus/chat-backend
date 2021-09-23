@@ -13,7 +13,7 @@ const io = require("socket.io")(server, {
 const cors = require("cors");
 app.use(cors());
 
-app.get("/hello", (req,res) => {
+app.get("/", (req,res) => {
     res.send("Hello");
     console.log("Hello");
 });

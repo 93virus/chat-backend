@@ -16,7 +16,8 @@ app.use(cors());
 
 app.get("/hello", (req,res) => {
     res.send("Hello");
-})
+    console.log("Hello");
+});
 
 io.on("connection", (socket) => {
     console.log("What is Socket : ", socket);

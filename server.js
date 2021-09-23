@@ -3,15 +3,17 @@ const app = express();
 
 const server = require("http").createServer(app);
 
+const cors = require("cors");
+app.use(cors());
+
 const io = require("socket.io")(server, {
     cors: {    
-        origin: ["https://chatjsfrontend.herokuapp.com/"],
+        origin: ["https://chatjsfrontend.herokuapp.com"],
         credentials: true  
     }
 });
 
-const cors = require("cors");
-app.use(cors());
+
 
 app.get("/", (req,res) => {
     res.send("Hello");
